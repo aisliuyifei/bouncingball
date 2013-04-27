@@ -8,17 +8,24 @@
 
 #import <UIKit/UIKit.h>
 #import "cocos2d.h"
+#import <GameKit/GameKit.h>
+#import "PlayerModel.h"
+#import "SCNavigationViewController.h"
+static BOOL isGameCenterAPIAvailable();
 
 @interface AppController : NSObject <UIApplicationDelegate, CCDirectorDelegate>
 {
 	UIWindow *window_;
-	UINavigationController *navController_;
+	SCNavigationViewController *navController_;
 	
 	CCDirectorIOS	*director_;							// weak ref
 }
 
 @property (nonatomic, retain) UIWindow *window;
-@property (readonly) UINavigationController *navController;
+@property (readonly) SCNavigationViewController *navController;
 @property (readonly) CCDirectorIOS *director;
+@property (retain,readwrite) NSString * currentPlayerID;
+@property (readwrite, getter=isGameCenterAuthenticationComplete) BOOL gameCenterAuthenticationComplete;
+@property (readwrite, retain) PlayerModel * player;
 
 @end
